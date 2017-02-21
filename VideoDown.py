@@ -40,6 +40,12 @@ class VideoDown():
 
         f.close()
 
+    def writeFile2(self,downloadUrl):
+        print('正在下载')
+        urllib.request.urlretrieve(downloadUrl,self.fileName)
+
+        print('下载完成')
+
 
 
 
@@ -47,4 +53,4 @@ class VideoDown():
 # filename= input('输入保存的文件名')
 # video_down = VideoDown(url,filename)
 # video_download_url = video_down.getVideoDownloadUrl()
-# video_down.writeFile(video_download_url)
+# video_down.writeFile2(video_download_url)
