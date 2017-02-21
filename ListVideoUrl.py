@@ -15,24 +15,37 @@ format = 'https://www.youtube.com%s'
 # def correctName(text):
 #     text.strip(' /\\:*"<>|?\n')
 #     return text
-
+urlList = []
+nameList = []
 
 for item in soup_select:
     if item['href'].startswith('/watch'):
-        item_text_replace = ''
+        item_text_replace = item.text.strip(' \n')
         if '#' in item.text:
-            item_text_replace = item.text.replace('#', '').strip(' \n')
+            item_text_replace = item_text_replace.replace('#', '')
+            print(item_text_replace)
         if '?' in item.text:
             item_text_replace = item_text_replace.replace('?', '')
+            print(item_text_replace)
+        nameList.append(item_text_replace + '\n' )
         video_down = VideoDown(format % item['href'], item_text_replace)
         video_download_url = video_down.getVideoDownloadUrl()
-        video_down.writeFile(video_download_url)
+        urlList.append(video_download_url + '\n')
+        # video_down.writeFile(video_download_url)
 
         # print(format % item['href'])
         # print(item.text.strip())
 
+# file = open('videoUrl.txt','w')
+# for item in urlList:
+#     file.write(item)
+#
+# file.close()
+file = open('videoName.txt','w')
+for item in nameList:
+    file.writelines(item)
 
-
+file.close()
 
 
 
