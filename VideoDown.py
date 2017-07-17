@@ -54,13 +54,3 @@ class VideoDown():
         urllib.request.urlretrieve(downloadUrl,self.fileName)
 
         print('下载完成')
-
-
-
-
-
-# url = input('输入下载网址')
-# filename= input('输入保存的文件名')
-# video_down = VideoDown(url,filename)
-# video_download_url = video_down.getVideoDownloadUrl()
-# video_down.writeFile2(video_download_url)
